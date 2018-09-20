@@ -79,7 +79,7 @@ def make_test_environ_builder(
         )
 
         # push a context so flask.json can use app's json attributes
-        with app.app_context():
+        with app.test_request_context():
             kwargs['data'] = json_dumps(kwargs.pop('json'))
 
         if 'content_type' not in kwargs:
